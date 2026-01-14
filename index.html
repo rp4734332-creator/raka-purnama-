@@ -4,150 +4,510 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GinsengGold | Jamu Ginseng Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #fbbf24;
+            --primary-dark: #f59e0b;
+            --secondary: #1e3a2c;
+            --light: #fffbeb;
+            --text: #333333;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-dark: rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f8f8f8;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
         }
+        
+        /* Header */
         header {
-            background: linear-gradient(135deg, #2e7d32, #66bb6a);
-            color: white;
-            text-align: center;
-            padding: 50px 20px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 36px;
-        }
-        header p {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-        section {
+            background: linear-gradient(rgba(30, 58, 44, 0.9), rgba(30, 58, 44, 0.8)), 
+                        url('https://images.unsplash.com/photo-1596040033221-a88f6ee6a5cc?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
             padding: 40px 20px;
-            max-width: 1000px;
-            margin: auto;
+            text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 12px var(--shadow-dark);
         }
-        .about, .menu, .contact {
-            background: white;
-            border-radius: 10px;
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 40px;
+            color: var(--primary);
+        }
+        
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tagline {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .location {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 30px;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        
+        /* Main Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        /* Card Styles */
+        .card {
+            background-color: var(--white);
+            border-radius: 16px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 15px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 6px solid var(--primary);
         }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow-dark);
+        }
+        
         h2 {
-            color: #2e7d32;
-            margin-bottom: 20px;
+            color: var(--secondary);
+            margin-bottom: 25px;
+            font-size: 28px;
+            position: relative;
+            padding-bottom: 10px;
         }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px var(--shadow);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
         .menu-item {
+            background: linear-gradient(to bottom right, var(--white), #fff9e6);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 5px 12px rgba(251, 191, 36, 0.15);
+        }
+        
+        .menu-header {
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px dashed #ccc;
-            padding: 10px 0;
+            align-items: flex-start;
+            margin-bottom: 15px;
         }
-        .menu-item:last-child {
-            border-bottom: none;
+        
+        .menu-name {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--secondary);
         }
+        
         .price {
-            font-weight: bold;
-            color: #2e7d32;
-        }
-        .contact a {
-            display: inline-block;
-            margin: 10px 10px 0 0;
-            padding: 12px 20px;
-            background: #2e7d32;
-            color: white;
-            text-decoration: none;
+            background-color: var(--primary);
+            color: var(--secondary);
+            font-weight: 800;
+            padding: 6px 12px;
             border-radius: 6px;
-            font-weight: bold;
+            font-size: 16px;
         }
-        .contact a.instagram {
-            background: #c13584;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
+        
+        .menu-desc {
             font-size: 14px;
-            color: #777;
+            color: #666;
+            margin-top: auto;
         }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px var(--shadow);
+        }
+        
+        .contact-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .btn-instagram {
+            background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn i {
+            font-size: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .copyright {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 15px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 32px;
+            }
+            
+            .tagline {
+                font-size: 18px;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        /* Staggered animation for menu items */
+        .menu-item:nth-child(1) { animation-delay: 0.1s; }
+        .menu-item:nth-child(2) { animation-delay: 0.2s; }
+        .menu-item:nth-child(3) { animation-delay: 0.3s; }
+        .menu-item:nth-child(4) { animation-delay: 0.4s; }
+        .menu-item:nth-child(5) { animation-delay: 0.5s; }
+        .menu-item:nth-child(6) { animation-delay: 0.6s; }
+        .menu-item:nth-child(7) { animation-delay: 0.7s; }
+        .menu-item:nth-child(8) { animation-delay: 0.8s; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>GinsengGold</h1>
-    <p>Jamu Ginseng Premium • Energi Alami • Sehat Setiap Hari</p>
-    <p>📍 Dekat Rusun Karet – Jakarta</p>
+    <div class="logo-container">
+        <i class="fas fa-seedling logo-icon"></i>
+        <div>
+            <h1>GinsengGold</h1>
+            <p class="tagline">Jamu Ginseng Premium • Energi Alami • Sehat Setiap Hari</p>
+        </div>
+    </div>
+    <div class="location">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Dekat Rusun Karet – Jakarta</span>
+    </div>
 </header>
 
-<section class="about">
-    <h2>Tentang Kami</h2>
-    <p>
-        <strong>GinsengGold</strong> adalah UMKM jamu ginseng premium yang diracik dari bahan alami pilihan,
-        higienis, dan berkualitas tinggi. Cocok untuk menjaga stamina, daya tahan tubuh,
-        dan energi harian Anda.
-    </p>
-</section>
+<div class="main-container">
+    <section class="card about">
+        <h2>Tentang Kami</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p><strong>GinsengGold</strong> adalah UMKM jamu ginseng premium yang diracik dari bahan alami pilihan, higienis, dan berkualitas tinggi. Kami berkomitmen untuk memberikan produk terbaik yang dapat menjaga stamina, daya tahan tubuh, dan energi harian Anda.</p>
+                <br>
+                <p>Dengan resep turun-temurun yang telah dimodernisasi, setiap racikan GinsengGold memberikan manfaat optimal bagi kesehatan. Kami memilih hanya bahan-bahan terbaik untuk menjaga kualitas dan keaslian produk kami.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=1470&auto=format&fit=crop" alt="Ginseng dan bahan herbal">
+            </div>
+        </div>
+    </section>
 
-<section class="menu">
-    <h2>Daftar Menu Jamu Ginseng</h2>
+    <section class="card menu">
+        <h2>Daftar Menu Jamu Ginseng</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="menu-header">
+                    <span class="menu-name">Jamu Ginseng Original</span>
+                    <span class="price">Rp45.000</span>
+                </div>
+                <p class="menu-desc">Racikan dasar dengan khasiat ginseng murni untuk stamina harian.</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-header">
+                    <span class="menu-name">Jamu Ginseng Jahe Merah</span>
+                    <span class="price">Rp48.000</span>
+                </div>
+                <p class="menu-desc">Kombinasi ginseng dengan jahe merah untuk menghangatkan tubuh.</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-header">
+                    <span class="menu-name">Jamu Ginseng Kunyit Asam</span>
+                    <span class="price">Rp50.000</span>
+                </div>
+                <p class="menu-desc">Paduan ginseng, kunyit, dan asam untuk detoksifikasi alami.</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-header">
+                    <span class="menu-name">Jamu Ginseng Madu Premium</span>
+                    <span class="price">Rp55.000</span>
+                </div>
+                <p class="menu-desc">Ginseng dengan madu asli untuk rasa manis alami dan energi ekstra.</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-header">
+                    <span class="menu-name">Jamu Ginseng Temulawak</span>
+                    <span class="price">Rp55.000</span>
+                </div>
+                <p class="menu-desc">Untuk kesehatan liver dan pencernaan dengan tambahan temulawak.</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-header">
+                    <span class="menu-name">Jamu Ginseng Super Booster</span>
+                    <span class="price">Rp65.000</span>
+                </div>
+                <p class="menu-desc">Racikan spesial dengan ekstrak ginseng tinggi untuk energi maksimal.</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-header">
+                    <span class="menu-name">Jamu Ginseng Royal Blend</span>
+                    <span class="price">Rp70.000</span>
+                </div>
+                <p class="menu-desc">Perpaduan 5 herbal pilihan dengan ginseng sebagai bahan utama.</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-header">
+                    <span class="menu-name">Jamu Ginseng Premium Exclusive</span>
+                    <span class="price">Rp75.000</span>
+                </div>
+                <p class="menu-desc">Racikan eksklusif dengan bahan terpilih untuk pengalaman terbaik.</p>
+            </div>
+        </div>
+    </section>
 
-    <div class="menu-item">
-        <span>Jamu Ginseng Original</span>
-        <span class="price">Rp45.000</span>
-    </div>
-    <div class="menu-item">
-        <span>Jamu Ginseng Jahe Merah</span>
-        <span class="price">Rp48.000</span>
-    </div>
-    <div class="menu-item">
-        <span>Jamu Ginseng Kunyit Asam</span>
-        <span class="price">Rp50.000</span>
-    </div>
-    <div class="menu-item">
-        <span>Jamu Ginseng Madu Premium</span>
-        <span class="price">Rp55.000</span>
-    </div>
-    <div class="menu-item">
-        <span>Jamu Ginseng Temulawak</span>
-        <span class="price">Rp55.000</span>
-    </div>
-    <div class="menu-item">
-        <span>Jamu Ginseng Super Booster</span>
-        <span class="price">Rp65.000</span>
-    </div>
-    <div class="menu-item">
-        <span>Jamu Ginseng Royal Blend</span>
-        <span class="price">Rp70.000</span>
-    </div>
-    <div class="menu-item">
-        <span>Jamu Ginseng Premium Exclusive</span>
-        <span class="price">Rp75.000</span>
-    </div>
-</section>
-
-<section class="contact">
-    <h2>Pesan Sekarang</h2>
-    <p>
-        Melayani pemesanan online & antar sekitar Rusun Karet dan sekitarnya.
-    </p>
-
-    <!-- GANTI NOMOR & USERNAME SESUAI PUNYA ANDA -->
-    <a href="https://wa.me/089526457551" target="_blank">
-        📲 Order via WhatsApp
-    </a>
-
-    <a href="https://instagram.com/GinsengGold.id" target="_blank" class="instagram">
-        📸 Instagram Kami
-    </a>
-</section>
+    <section class="card contact">
+        <h2>Pesan Sekarang</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <p>Melayani pemesanan online & antar sekitar Rusun Karet dan sekitarnya. Pesan sekarang dan dapatkan promo spesial untuk pembelian pertama!</p>
+                
+                <div class="contact-buttons">
+                    <a href="https://wa.me/089526457551" target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        Order via WhatsApp
+                    </a>
+                    <a href="https://instagram.com/GinsengGold.id" target="_blank" class="btn btn-instagram">
+                        <i class="fab fa-instagram"></i>
+                        Instagram Kami
+                    </a>
+                </div>
+                
+                <div style="margin-top: 25px; padding: 15px; background-color: #fffbeb; border-radius: 10px; border-left: 4px solid var(--primary);">
+                    <p style="font-size: 14px; margin: 0;"><i class="fas fa-shipping-fast" style="color: var(--primary); margin-right: 8px;"></i> <strong>Gratis ongkir</strong> untuk wilayah sekitar Rusun Karet dengan pembelian minimal Rp100.000</p>
+                </div>
+            </div>
+            <div class="contact-image">
+                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1470&auto=format&fit=crop" alt="Minuman herbal sehat">
+            </div>
+        </div>
+    </section>
+</div>
 
 <footer>
-    © 2026 GinsengGold • UMKM Jamu Ginseng Premium
+    <div class="footer-content">
+        <div class="footer-logo">GinsengGold</div>
+        <p>Jamu Ginseng Premium - UMKM Lokal Indonesia</p>
+        <p>Dedicated to your health and wellness</p>
+        <div class="copyright">
+            © 2026 GinsengGold • UMKM Jamu Ginseng Premium
+        </div>
+    </div>
 </footer>
+
+<script>
+    // Animasi saat scrolling
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animasi untuk elemen yang masuk saat scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Terapkan animasi ke semua card
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+        
+        // Animasi untuk menu items
+        document.querySelectorAll('.menu-item').forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.1}s`;
+        });
+    });
+</script>
 
 </body>
 </html>
